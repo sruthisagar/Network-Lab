@@ -1,4 +1,5 @@
-//client program
+//client program 
+//Author : Sruthi Sagar V K
 
 #include <stdio.h>
 #include <unistd.h>
