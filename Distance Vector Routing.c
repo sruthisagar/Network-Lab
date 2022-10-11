@@ -1,3 +1,6 @@
+
+//Distance Victor Routing
+//Author :Sruthi Sagar V K
 #include<stdlib.h>
 #include<stdio.h>
 
@@ -59,6 +62,7 @@ int main()
     }
     return 0;
 }
+
 
 // 0 5 2 3 1000
 // 5 0 4 1000 3
