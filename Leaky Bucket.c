@@ -1,3 +1,8 @@
+/*
+    Leaky Bucket in C
+    Author: Sruthi Sagar
+*/
+
 #include<stdio.h>
 #include<stdlib.h>
 
