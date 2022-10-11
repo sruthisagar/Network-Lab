@@ -1,5 +1,5 @@
-#include <stdlib.h>
-#include <stdio.h>
+#include<stdlib.h>
+#include<stdio.h>
 
 struct node
 {
@@ -10,9 +10,9 @@ struct node
 int main()
 {
     int dm[20][20], no;
-    printf("Enter the number of nodes\n");
+    printf("Enter number of nodes\n");
     scanf("%d",&no);
-    printf("\nEnter the distance matrix\n");
+    printf("\nEnter distance matrix\n");
     for (int i = 0; i < no; i++)
     {
         for (int j = 0; j < no; j++)
@@ -48,7 +48,7 @@ int main()
     for (int i = 0; i < no; i++)
     {
         printf("\nRouter %d:\n",i+1);
-        printf("Node\t\tNext Hop\tDistance\n");
+        printf("Node\t\tNext Hop\t\tDistance\n");
         for (int j = 0; j < no; j++)
         {
             if((j+1)!=(route[i].from[j]+1))
