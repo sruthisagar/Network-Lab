@@ -25,7 +25,7 @@ void main()
 
     printf("Enter bucket size\n");
     scanf("%d",&bsize);
-    printf("Enter output rate\n");
+    printf("Enter rate of output\n");
     scanf("%d",&outrate);
 
     m=p[n-1].time;
