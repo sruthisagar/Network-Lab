@@ -9,6 +9,8 @@
 #include<unistd.h>
 #include<arpa/inet.h>
 
+// The code creates a server for implementing Go Back N
+
 int main()
 {
     int c_sock;
@@ -54,3 +56,5 @@ int main()
      close(c_sock);
      return 0;
 }
+
+// END
