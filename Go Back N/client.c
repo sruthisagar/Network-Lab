@@ -9,6 +9,8 @@
 #include<unistd.h>
 #include<arpa/inet.h>
 
+// Client Program
+
 int main()
 {
     int c_sock;
@@ -21,11 +23,11 @@ int main()
 	
     if(connect(c_sock, (struct sockaddr*)&client, sizeof(client)) == -1)
     {
-        printf("Connection failed");
+        printf("Connection failed"); // Connection Failed
         return 0;
     }
     
-    printf("Connection Established\n\n");
+    printf("Connection Established\n\n"); // Connection Established
     char msg1[50]="Acknowledgement ";
     char msg2[50];
     char buff[100];
@@ -45,7 +47,7 @@ int main()
         else
         {
         	printf("%s received\n",buff);
-        	printf("Acknowledgement %c sent\n\n",buff[strlen(buff)-1]);
+        	printf("Acknowledgement %c sent\n\n",buff[strlen(buff)-1]); // ACK Sent
         	strcpy(msg2,msg1);
         	msg2[strlen(msg2)]=i+'0';
         	write(c_sock,msg2, sizeof(msg2));
@@ -54,3 +56,5 @@ int main()
      close(c_sock);
      return 0;
 }
+
+// END
