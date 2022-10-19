@@ -1,6 +1,8 @@
 /*
     Leaky Bucket in C
     Author: Sruthi Sagar
+    Btech in Computer Science 
+    Mar Athanesius Collage of Engineering
 */
 
 #include<stdio.h>
