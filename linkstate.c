@@ -2,11 +2,13 @@
 #include<stdlib.h>
 
 #define min(x, y) (x<y)?x:y
-
+void hello(){
+printf("hello");
+}
 void main(){
     int n, i, j, source, k = 999, count = 0, ind, dist = 0;
 
-    printf("Enter the number of routers : ");
+    printf("Enter the number of routers : \n");
     scanf("%i", &n);
 
     int arr[n][n];
@@ -26,7 +28,7 @@ void main(){
         src[i] = arr[source][i];
         // k = min(src[i], k);
     }
-
+    int abcd,bcde;
     flag[source] = 1;
 
     while(count < n){
@@ -46,6 +48,7 @@ void main(){
         }
         count++;
     }
+    abcd=0;
     for(i=0;i<n;i++){
         printf("%i ", src[i]);
     }
