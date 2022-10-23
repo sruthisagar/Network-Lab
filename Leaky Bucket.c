@@ -1,70 +1,50 @@
-/*
-    Leaky Bucket in C
-    Author: Sruthi Sagar
-    Btech in Computer Science 
-    Mar Athanesius Collage of Engineering
-*/
-
-#include<stdio.h>
-#include<stdlib.h>
-
-struct packet
+#include <stdio.h>
+int main()
 {
-    int time;
-    int size;
-} p[50];
-
-void main()
-{
-    int i,n,m,k=0;
-    int bsize,bfilled,outrate;
+    int b, o, n;
+    printf("Enter the bucket size\n");
+    scanf("%i", &b);
+    printf("Enter the output rate\n");
+    scanf("%i", &o);
     printf("Enter the number of packets\n");
-    scanf("%d",&n);
-    printf("Enter arrival time and size of each packet in the order of arrival time\n");
-
-    for(i=0;i<n;i++)
-        scanf("%d%d",&p[i].time,&p[i].size);
-
-    printf("Enter bucket size\n");
-    scanf("%d",&bsize);
-    printf("Enter rate of output\n");
-    scanf("%d",&outrate);
-
-    m=p[n-1].time;
-    i=1;
-    k=0;
-    bfilled=0;
-
-    while(i<=m || bfilled!=0)
+    scanf("%i", &n);
+    int size[1000] = {0};
+    int i = 0, loop = n;
+    while (loop--)
     {
-        printf("\n\nAt time %d\n\n",i);
-        while(p[k].time<=i && k<n)
+        printf("Enter the packet size at time %d", i + 1);
+        scanf("%d", &size[i]);
+        i++;
+    }
+    printf("Time\tReceived\tSent\tDropped\tRemaining\n");
+    int rem = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (rem + size[i] <= b)
         {
-            if(bsize>=bfilled+p[k].size)
-            {
-                bfilled=bfilled + p[k].size;
-                printf("%d byte packet inserted\n",p[k].size);
-                k=k+1;
-            }
-            else
-            {
-                printf("%d byte packet discarded\n",p[k].size);
-                k=k+1;
-            }
+            rem = rem - o + size[i];
+            printf("%d\t%d\t%d\t%d\t%d\n", i + 1, size[i], o, 0, rem);
         }
-        if(bfilled==0)
-            printf("No packet to transmit\n");
-        else if(bfilled>=outrate)
+        else if (i == 0)
         {
-            bfilled=bfilled-outrate;
-            printf("%d bytes transfered\n",outrate);
+            rem = rem;
+            printf("%d\t%d\t%d\t%d\t%d\n", i + 1, size[i], 0, size[i], rem);
         }
         else
         {
-            printf("%d bytes transferred\n",bfilled);
-            bfilled=0;
+            rem = rem - o;
+            printf("%d\t%d\t%d\t%d\t%d\n", i + 1, size[i], o, size[i], rem);
         }
-        printf("Packet in the bucket - %d byte\n",bfilled);
-        i++;
+    }
+    while (rem > 0)
+    {
+        rem -= o;
+        int sent = o;
+        if (rem < 0)
+        {
+            sent = rem + o;
+            rem = 0;
+        }
+        printf("%d\t%d\t%d\t%d\t%d\n", i + 1, size[i], sent, size[i], rem);
     }
 }
